@@ -1,0 +1,9 @@
+C:\Users\User\Documents\dappersample2018\dappersample2018.Data\bin\Debug\dappersample2018.Data.dll
+C:\Users\User\Documents\dappersample2018\dappersample2018.Data\bin\Debug\dappersample2018.Data.pdb
+C:\Users\User\Documents\dappersample2018\dappersample2018.Data\bin\Debug\Dapper.dll
+C:\Users\User\Documents\dappersample2018\dappersample2018.Data\bin\Debug\dappersample2018.Core.dll
+C:\Users\User\Documents\dappersample2018\dappersample2018.Data\bin\Debug\dappersample2018.Core.pdb
+C:\Users\User\Documents\dappersample2018\dappersample2018.Data\bin\Debug\Dapper.xml
+C:\Users\User\Documents\dappersample2018\dappersample2018.Data\obj\Debug\dappersample2018.Data.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\dappersample2018\dappersample2018.Data\obj\Debug\dappersample2018.Data.dll
+C:\Users\User\Documents\dappersample2018\dappersample2018.Data\obj\Debug\dappersample2018.Data.pdb
