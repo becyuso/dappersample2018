@@ -1,0 +1,51 @@
+﻿@model dappersample2018.Core.Entities.Employees
+
+@{
+    ViewBag.Title = "Create";
+}
+@if (TempData["resp"] != null)
+{
+    <script>
+        alert('@TempData["resp"]');
+    </script>
+}
+<h2>Employee - Create</h2>
+
+<p>
+    @Html.ActionLink("Back", "Index")
+</p>
+@using (Html.BeginForm("CreateData", "Employee", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HireDate)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBox("LastName")
+            </td>
+            <td>
+                @Html.TextBox("FirstName")
+            </td>
+            <td>
+                @Html.TextBox("BirthDate")
+            </td>
+            <td>
+                @Html.TextBox("HireDate")
+            </td>
+        </tr>
+    </table>
+    <br />
+    <input type="submit" value="save" />
+}

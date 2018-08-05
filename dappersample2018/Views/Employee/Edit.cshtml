@@ -1,0 +1,67 @@
+﻿@model dappersample2018.Core.Entities.Employees
+
+@{
+    ViewBag.Title = "Edit";
+}
+@if (TempData["resp"] != null)
+{
+    <script>
+        alert('@TempData["resp"]');
+    </script>
+}
+<h2>Employee - @ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Back", "Index")
+</p>
+@using (Html.BeginForm("EditData", "Employee", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HireDate)
+            </th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBox("LastName", Model.LastName)
+            </td>
+            <td>
+                @Html.TextBox("FirstName", Model.FirstName)
+            </td>
+            <td>
+                @{ 
+                    string strBirthDate = "";
+                    if (Model.BirthDate.HasValue)
+                    {
+                        strBirthDate = Model.BirthDate.Value.ToShortDateString();
+                    }
+                }
+                @Html.TextBox("BirthDate", strBirthDate)
+            </td>
+            <td>
+                @{
+                    string strHireDate = "";
+                    if (Model.HireDate.HasValue)
+                    {
+                        strHireDate = Model.HireDate.Value.ToShortDateString();
+                    }
+                }
+                @Html.TextBox("HireDate", strHireDate)
+            </td>
+        </tr>
+    </table>
+    <br />
+    <input type="submit" value="save" />
+    @Html.Hidden("EmployeeID", Model.EmployeeID)
+}

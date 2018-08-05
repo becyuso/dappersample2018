@@ -3,13 +3,18 @@
 @{
     ViewBag.Title = "Index";
 }
-
+@if (TempData["resp"] != null)
+{
+    <script>
+        alert('@TempData["resp"]');
+    </script>
+}
 <h2>Employee - List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
+<table width="1000">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.LastName)
@@ -18,14 +23,12 @@
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.BirthDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.HireDate)
         </th>
+        <th></th>
         <th></th>
     </tr>
 
@@ -39,19 +42,28 @@
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                @if (item.BirthDate.HasValue)
+                {
+                    @item.BirthDate.Value.ToShortDateString()
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
+                @if (item.HireDate.HasValue)
+                {
+                    @item.HireDate.Value.ToShortDateString()
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HireDate)
+                <input type="submit" value="修改" class="btn btn-default" onclick="SetID(@item.EmployeeID,'Edit')"/>
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID })
+                <input type="submit" value="刪除" class="btn btn-default" onclick="SetID(@item.EmployeeID,'DeleteData')"/>
             </td>
         </tr>
     }
-
 </table>
+@using (Html.BeginForm("", "", FormMethod.Post, new { ID = "SubForm"}))
+{
+    @Html.Hidden("ID")
+}
+<script src="~/Scripts/Employee/employee.js"></script>
