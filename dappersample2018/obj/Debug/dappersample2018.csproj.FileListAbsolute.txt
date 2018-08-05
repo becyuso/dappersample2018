@@ -99,7 +99,6 @@ D:\dappersample2018\dappersample2018\bin\zh-Hant\Microsoft.Owin.Security.Microso
 D:\dappersample2018\dappersample2018\obj\Debug\dappersample2018.csprojResolveAssemblyReference.cache
 D:\dappersample2018\dappersample2018\obj\Debug\dappersample2018.dll
 D:\dappersample2018\dappersample2018\obj\Debug\dappersample2018.pdb
-C:\Users\User\Documents\dappersample2018\dappersample2018\obj\Debug\dappersample2018.csprojResolveAssemblyReference.cache
 C:\Users\User\Documents\dappersample2018\dappersample2018\bin\ApplicationInsights.config
 C:\Users\User\Documents\dappersample2018\dappersample2018\bin\roslyn\csc.exe
 C:\Users\User\Documents\dappersample2018\dappersample2018\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -204,5 +203,15 @@ C:\Users\User\Documents\dappersample2018\dappersample2018\bin\zh-Hant\Microsoft.
 C:\Users\User\Documents\dappersample2018\dappersample2018\bin\zh-Hant\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\User\Documents\dappersample2018\dappersample2018\bin\zh-Hant\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\User\Documents\dappersample2018\dappersample2018\bin\zh-Hant\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+C:\Users\User\Documents\dappersample2018\dappersample2018\obj\Debug\dappersample2018.csprojResolveAssemblyReference.cache
 C:\Users\User\Documents\dappersample2018\dappersample2018\obj\Debug\dappersample2018.dll
 C:\Users\User\Documents\dappersample2018\dappersample2018\obj\Debug\dappersample2018.pdb
+C:\Users\User\Documents\dappersample2018\dappersample2018\bin\System.Net.Http.Formatting.dll
+C:\Users\User\Documents\dappersample2018\dappersample2018\bin\System.Web.Http.dll
+C:\Users\User\Documents\dappersample2018\dappersample2018\bin\System.Web.Http.WebHost.dll
+C:\Users\User\Documents\dappersample2018\dappersample2018\bin\System.Net.Http.Formatting.xml
+C:\Users\User\Documents\dappersample2018\dappersample2018\bin\System.Web.Http.xml
+C:\Users\User\Documents\dappersample2018\dappersample2018\bin\System.Web.Http.WebHost.xml
+C:\Users\User\Documents\dappersample2018\dappersample2018\bin\zh-Hant\System.Net.Http.Formatting.resources.dll
+C:\Users\User\Documents\dappersample2018\dappersample2018\bin\zh-Hant\System.Web.Http.resources.dll
+C:\Users\User\Documents\dappersample2018\dappersample2018\bin\zh-Hant\System.Web.Http.WebHost.resources.dll
