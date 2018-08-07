@@ -8,6 +8,7 @@ using dappersample2018.Core.Entities;
 using dappersample2018.Data.Repositories;
 using dappersampleApi2018.ApiHelper;
 using Newtonsoft.Json;
+using dappersample2018.Models.ViewModels;
 
 namespace dappersample2018.Controllers
 {
@@ -18,11 +19,20 @@ namespace dappersample2018.Controllers
         //    this._repository = new EmployeeRepository();
         //}
 
-        public ActionResult Index()
+        public ActionResult Index(EmployeeViewModel model)
         {
             var employees = ApiHelper.GetResponseData<Employees>("SelectEmployees", new Dictionary<string, object>());
-            //var employees = this._repository.GetEmployees();
-            return View(employees);
+            model.PageInfo.ResultCount = employees.Count();
+            model.List = employees.Skip((model.CurrentPageIndex - 1) * model.PageInfo.PageSize).Take(model.PageInfo.PageSize);
+            return View(model);
+        }
+
+        public ActionResult ShowResult(EmployeeViewModel model)
+        {
+            var employees = ApiHelper.GetResponseData<Employees>("SelectEmployees", new Dictionary<string, object>());
+            model.PageInfo.ResultCount = employees.Count();
+            model.List = employees.Skip((model.CurrentPageIndex - 1) * model.PageInfo.PageSize).Take(model.PageInfo.PageSize);
+            return View("Index", model);
         }
 
         public ActionResult Create()
@@ -32,8 +42,9 @@ namespace dappersample2018.Controllers
 
         public ActionResult Edit(int ID)
         {
-            var employees = ApiHelper.GetResponseData<Employees>("SelectEmployees", new Dictionary<string, object>()).FirstOrDefault(x => x.EmployeeID == ID) ?? new Employees();
-            //var employees = this._repository.GetEmployeebyID(ID);
+            var dic = new Dictionary<string, object>();
+            dic.Add("EmployeeID", ID);
+            var employees = ApiHelper.GetResponseObject<Employees>("SelectEmployees", "SelectById", dic) ?? new Employees();
             return View(employees);
         }
 
@@ -43,7 +54,6 @@ namespace dappersample2018.Controllers
             if (ModelState.IsValid)
             {
                 var response = ApiHelper.SendRequest("CreateEmployees", Getdic<Employees>(emp));
-                //var response = this._repository.CreateEmployee(emp);
                 if (response)
                 {
                     TempData["resp"] = "Success";
@@ -60,7 +70,6 @@ namespace dappersample2018.Controllers
             if (ModelState.IsValid)
             {
                 var response = ApiHelper.SendRequest("UpdateEmployees", Getdic<Employees>(emp));
-                //var response = this._repository.EditEmployee(emp);
                 if (response)
                 {
                     TempData["resp"] = "Success";
@@ -77,7 +86,6 @@ namespace dappersample2018.Controllers
             var dic = new Dictionary<string, object>();
             dic.Add("EmployeeID", ID);
             var response = ApiHelper.SendRequest("DeleteEmployees", dic);
-            //var response = this._repository.DeleteEmployee(ID);
             if (response)
             {
                 TempData["resp"] = "Success";

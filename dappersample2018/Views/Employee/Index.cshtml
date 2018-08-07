@@ -1,4 +1,6 @@
-﻿@model IEnumerable<dappersample2018.Core.Entities.Employees>
+﻿@model dappersample2018.Models.ViewModels.EmployeeViewModel
+
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
 @{
     ViewBag.Title = "Index";
@@ -14,56 +16,86 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table width="1000">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HireDate)
-        </th>
-        <th></th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+@using (Html.BeginForm("ShowResult", "Employee", FormMethod.Post, new { id = "signupform" }))
+{
+    <div align="right">
+        <label>Page :</label>
+        @Html.DropDownListFor(m => m.PageInfo.PageSize, new SelectList(new List<object> { new { value = 5, text = "5" }, new { value = 6, text = "6" }, new { value = 7, text = "7" }, new { value = 10, text = "10" } }, "value", "text", 0),new { onchange = "$('#CurrentPageIndex').val('1'); $('#signupform').submit();" })
+    </div>
+    @Html.HiddenFor(m => m.CurrentPageIndex);
+    var modelfirst = Model.List.FirstOrDefault();
+    <table width="1000">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @if (item.BirthDate.HasValue)
-                {
-                    @item.BirthDate.Value.ToShortDateString()
-                }
-            </td>
-            <td>
-                @if (item.HireDate.HasValue)
-                {
-                    @item.HireDate.Value.ToShortDateString()
-                }
-            </td>
-            <td>
-                <input type="submit" value="修改" class="btn btn-default" onclick="SetID(@item.EmployeeID,'Edit')"/>
-            </td>
-            <td>
-                <input type="submit" value="刪除" class="btn btn-default" onclick="SetID(@item.EmployeeID,'DeleteData')"/>
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => modelfirst.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => modelfirst.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => modelfirst.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => modelfirst.HireDate)
+            </th>
+            <th></th>
+            <th></th>
         </tr>
-    }
-</table>
-@using (Html.BeginForm("", "", FormMethod.Post, new { ID = "SubForm"}))
+
+        @foreach (var item in Model.List)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @if (item.BirthDate.HasValue)
+                    {
+                        @item.BirthDate.Value.ToShortDateString()
+                    }
+                </td>
+                <td>
+                    @if (item.HireDate.HasValue)
+                    {
+                        @item.HireDate.Value.ToShortDateString()
+                    }
+                </td>
+                <td>
+                    <input type="button" value="修改" class="btn btn-default" onclick="SetID(@item.EmployeeID,'Edit')" />
+                </td>
+                <td>
+                    <input type="button" value="刪除" class="btn btn-default" onclick="SetID(@item.EmployeeID,'DeleteData')" />
+                </td>
+            </tr>
+        }
+    </table>
+}
+<div align="left">
+    <div id="page-selection"></div>
+</div>
+@using (Html.BeginForm("", "", FormMethod.Post, new { ID = "SubForm" }))
 {
     @Html.Hidden("ID")
+}
+@if (Model.List != null)
+{
+    <script>
+        if ($("#page-selection").length) setBootPag();
+        function setBootPag(){
+            $('#page-selection').bootpag({
+                total: @Model.PageInfo.PageCount,
+                page : @Model.CurrentPageIndex,
+                maxVisible: 5,
+                leaps:false
+            }).on("page", function (event, num) {
+                var tempCurrent = num;
+                $("#CurrentPageIndex").val(tempCurrent);
+                $("#signupform").submit();
+            });
+        }
+    </script>
 }
 <script src="~/Scripts/Employee/employee.js"></script>

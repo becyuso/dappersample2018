@@ -14,9 +14,15 @@ namespace dappersampleApi2018.Controllers
         {
             return "Get";
         }
-        public IEnumerable<Employees> Post(Dictionary<string, object> dic)
+        public IEnumerable<Employees> Post(Dictionary<string, object> conditions)
         {
-             var employees = this.IEmployeeRepository.GetEmployees();
+            var employees = this.IEmployeeRepository.GetEmployees();
+            return employees;
+        }
+
+        public Employees SelectById(Dictionary<string, object> conditions)
+        {
+            var employees = this.IEmployeeRepository.GetEmployeebyID(Convert.ToInt32(conditions["EmployeeID"]));
             return employees;
         }
     }

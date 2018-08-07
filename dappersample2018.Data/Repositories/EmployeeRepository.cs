@@ -32,9 +32,9 @@ namespace dappersample2018.Data.Repositories
             {
                 connection.Open();
 
-                var records = connection.Query<Employees>(strSql, new { EmployeeID = ID });
+                var records = connection.QuerySingle<Employees>(strSql, new { EmployeeID = ID });
 
-                return records == null ? new Employees() : records.FirstOrDefault();
+                return records == null ? new Employees() : records;
             }
         }
 
@@ -52,7 +52,7 @@ namespace dappersample2018.Data.Repositories
                         HireDate = emp.HireDate
                     }
                 );
-                return Convert.ToBoolean(records);
+                return Convert.ToBoolean(records); 
             }
         }
 

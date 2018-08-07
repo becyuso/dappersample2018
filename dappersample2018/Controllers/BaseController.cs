@@ -9,6 +9,6 @@ namespace dappersample2018.Controllers
 {
     public class BaseController : Controller
     {
-        protected IEmployeeRepository _repository { get; set; }
+        //protected IEmployeeRepository _repository { get; set; }
     }
 }
