@@ -75,7 +75,6 @@ namespace dappersampleApi2018.ApiHelper
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = client.PostAsync(string.Format("api/{0}/Post", api), content).Result;
-            var asdfda = response.Content.ReadAsStringAsync();
             return response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync().Result : "";
         }
 
@@ -96,7 +95,7 @@ namespace dappersampleApi2018.ApiHelper
         }
 
         public static List<T> DeserializeList<T>(string value)
-       {
+        {
             if (value != default(string) && value.Length > 0)
             {
                 try

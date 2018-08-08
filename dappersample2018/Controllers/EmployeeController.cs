@@ -53,7 +53,14 @@ namespace dappersample2018.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = ApiHelper.SendRequest("CreateEmployees", Getdic<Employees>(emp));
+                Dictionary<string, object> dic = new Dictionary<string, object>()
+                {
+                    ["LastName"] = emp.LastName,
+                    ["FirstName"] = emp.FirstName,
+                    ["BirthDate"] = emp.BirthDate,
+                    ["HireDate"] = emp.HireDate
+                };
+                var response = ApiHelper.SendRequest("CreateEmployees", dic);
                 if (response)
                 {
                     TempData["resp"] = "Success";
@@ -95,17 +102,6 @@ namespace dappersample2018.Controllers
                 TempData["resp"] = "Error";
             }
             return RedirectToAction("Index");
-        }
-
-        protected static Dictionary<string, object> Getdic<T>(T model) where T : class
-        {
-            var dic = new Dictionary<string, object>();
-            var pro = model.GetType().GetProperties();
-            foreach (var item in pro)
-            {
-                dic.Add(item.Name, item.GetValue(model));
-            }
-            return dic;
         }
     }
 }

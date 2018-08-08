@@ -16,6 +16,7 @@ namespace dappersampleApi2018.Controllers
         }
         public bool Post(Dictionary<string, object> conditions)
         {
+            return IRepository.create<Employees>(conditions);
             var emp = new Employees();
             emp.LastName = conditions["LastName"] == null ? "" : Convert.ToString(conditions["LastName"]);
             emp.FirstName = conditions["FirstName"] == null ? "" : Convert.ToString(conditions["FirstName"]);

@@ -2,3 +2,4 @@ C:\Users\User\Documents\dappersample2018\dappersample2018.Core\bin\Debug\dappers
 C:\Users\User\Documents\dappersample2018\dappersample2018.Core\bin\Debug\dappersample2018.Core.pdb
 C:\Users\User\Documents\dappersample2018\dappersample2018.Core\obj\Debug\dappersample2018.Core.dll
 C:\Users\User\Documents\dappersample2018\dappersample2018.Core\obj\Debug\dappersample2018.Core.pdb
+C:\Users\User\Documents\dappersample2018\dappersample2018.Core\obj\Debug\dappersample2018.Core.csprojResolveAssemblyReference.cache

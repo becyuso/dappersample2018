@@ -11,6 +11,9 @@ namespace dappersampleApi2018.Controllers
 {
     public class BaseApiController : ApiController
     {
+        /// <summary>
+        /// Entity Repository
+        /// </summary>
         private IEmployeeRepository _IEmployeeRepository;
         public IEmployeeRepository IEmployeeRepository
         {
@@ -22,6 +25,23 @@ namespace dappersampleApi2018.Controllers
                     _IEmployeeRepository = new EmployeeRepository();
                 }
                 return _IEmployeeRepository;
+            }
+        }
+
+        /// <summary>
+        /// Common Repository by 2018/08/08
+        /// </summary>
+        private IRepository _IRepository;
+        public IRepository IRepository
+        {
+            set { _IRepository = value; }
+            get
+            {
+                if (_IRepository == null)
+                {
+                    _IRepository = new Repository();
+                }
+                return _IRepository;
             }
         }
     }
